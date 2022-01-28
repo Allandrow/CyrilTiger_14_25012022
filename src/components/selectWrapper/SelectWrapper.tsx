@@ -4,6 +4,7 @@ import { State } from '../../data/selectData'
 interface SelectWrapperProps {
   label: string
   name: string
+  value: string
   handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
   data: State[] | string[]
 }
@@ -11,13 +12,14 @@ interface SelectWrapperProps {
 export const SelectWrapper = ({
   label,
   name,
+  value,
   handler,
   data,
 }: SelectWrapperProps) => {
   return (
     <label>
       <span>{label}</span>
-      <select name={name} onChange={handler}>
+      <select name={name} onChange={handler} value={value}>
         {data.map((item) => {
           if (typeof item === 'string') {
             return (
