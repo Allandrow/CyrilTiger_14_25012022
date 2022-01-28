@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { FormEvent, SyntheticEvent, useState } from 'react'
+import { departments, states } from '../../data/selectData'
+import { InputWrapper } from '../inputWrapper/InputWrapper'
+import { SelectWrapper } from '../selectWrapper/SelectWrapper'
 
 type OptionalString = string | undefined
 type OptionalNumber = number | undefined
@@ -29,106 +32,80 @@ export const NewEmployeeForm = () => {
 
   const [employee, setEmployee] = useState(initialEmployeeState)
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
+  const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.currentTarget
     setEmployee((prevState) => ({
       ...prevState,
       [name]: value,
     }))
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     console.log(employee)
   }
 
-  // TODO : Change event types
-
   return (
     <form>
-      <label>
-        <span>First Name</span>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="Employee's first name"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <span>Last Name</span>
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Employee's last name"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <span>Date of Birth</span>
-        <input
-          type="date"
-          name="dateOfBirth"
-          placeholder="dd/mm/yyyy"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <span>Start Date</span>
-        <input
-          type="date"
-          name="startDate"
-          placeholder="Employee's starting date"
-          onChange={handleChange}
-        />
-      </label>
+      <InputWrapper
+        label="First Name"
+        name="firstName"
+        handler={handleChange}
+        placeholder="Employee's first name"
+      />
+      <InputWrapper
+        label="Last Name"
+        name="lastName"
+        handler={handleChange}
+        placeholder="Employee's last name"
+      />
+      <InputWrapper
+        label="Date of Birth"
+        type="date"
+        name="dateOfBirth"
+        handler={handleChange}
+        placeholder="dd/mm/yyyy"
+      />
+      <InputWrapper
+        label="Start Date"
+        type="date"
+        name="startDate"
+        handler={handleChange}
+        placeholder="dd/mm/yyyy"
+      />
       <fieldset>
         <legend>Adress</legend>
-        <label>
-          <span>Street</span>
-          <input
-            type="text"
-            name="street"
-            placeholder="street number and name"
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>City</span>
-          <input
-            type="text"
-            name="city"
-            placeholder="City name"
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          <span>State</span>
-          <select name="state" onChange={handleChange}>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-            <option value="alabama">Alabama</option>
-          </select>
-        </label>
-        <label>
-          <span>Zip Code</span>
-          <input type="number" name="zipCode" onChange={handleChange} />
-        </label>
+        <InputWrapper
+          label="Street"
+          name="street"
+          handler={handleChange}
+          placeholder="Street number and name"
+        />
+        <InputWrapper
+          label="City"
+          name="city"
+          handler={handleChange}
+          placeholder="City name"
+        />
+        <SelectWrapper
+          label="State"
+          name="state"
+          handler={handleChange}
+          data={states}
+        />
+        <InputWrapper
+          label="Zip Code"
+          name="zipCode"
+          type="number"
+          handler={handleChange}
+        />
       </fieldset>
-      <label>
-        <span>Department</span>
-        <select name="department" onChange={handleChange}>
-          <option value="sales">Sales</option>
-          <option value="marketing">Narketing</option>
-          <option value="engineering">Engineering</option>
-          <option value="human-resources">Human Resources</option>
-          <option value="legal">Legal</option>
-        </select>
-      </label>
+      <SelectWrapper
+        label="Department"
+        name="department"
+        handler={handleChange}
+        data={departments}
+      />
       <button onClick={handleSubmit}>Save</button>
     </form>
   )
