@@ -16,24 +16,20 @@ export const SelectWrapper = ({
   handler,
   data,
 }: SelectWrapperProps) => {
+  const options = data.map((item) => {
+    if (typeof item === 'string') return { name: item, abbreviation: item }
+    return item
+  })
+
   return (
     <label>
       <span>{label}</span>
-      <select name={name} onChange={handler} value={value}>
-        {data.map((item) => {
-          if (typeof item === 'string') {
-            return (
-              <option value={item} key={item}>
-                {item}
-              </option>
-            )
-          }
-          return (
-            <option value={item.abbreviation} key={item.abbreviation}>
-              {item.name}
-            </option>
-          )
-        })}
+      <select name={name} onChange={handler}>
+        {options.map((item) => (
+          <option value={item.abbreviation} key={item.abbreviation}>
+            {item.name}
+          </option>
+        ))}
       </select>
     </label>
   )
