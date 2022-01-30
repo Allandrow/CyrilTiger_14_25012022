@@ -16,10 +16,9 @@ export const SelectWrapper = ({
   handler,
   data,
 }: SelectWrapperProps) => {
-  const options = data.map((item) => {
-    if (typeof item === 'string') return { name: item, abbreviation: item }
-    return item
-  })
+  const options = data.map((item) =>
+    typeof item === 'string' ? { name: item, abbreviation: item } : item
+  )
 
   return (
     <label>
