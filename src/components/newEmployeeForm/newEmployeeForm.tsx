@@ -1,5 +1,4 @@
 import { FormEvent, SyntheticEvent, useState } from 'react'
-import { departments, states } from '../../data/selectData'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
 
@@ -23,15 +22,22 @@ export const NewEmployeeForm = () => {
     startDate: '',
     street: '',
     city: '',
-    state: states[0].abbreviation,
+    state: '',
     zipCode: '',
-    department: departments[0],
+    department: '',
   } as Employee
 
   const [employee, setEmployee] = useState(initialEmployeeState)
 
   const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.currentTarget
+    setEmployee((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
+
+  const handleInit = (value: string, name: string) => {
     setEmployee((prevState) => ({
       ...prevState,
       [name]: value,
@@ -94,9 +100,9 @@ export const NewEmployeeForm = () => {
         <SelectWrapper
           label="State"
           name="state"
-          value={employee.state}
           handler={handleChange}
-          data={states}
+          init={handleInit}
+          content="states"
         />
         <InputWrapper
           label="Zip Code"
@@ -109,9 +115,9 @@ export const NewEmployeeForm = () => {
       <SelectWrapper
         label="Department"
         name="department"
-        value={employee.department}
         handler={handleChange}
-        data={departments}
+        init={handleInit}
+        content="departments"
       />
       <button onClick={handleSubmit}>Save</button>
     </form>
