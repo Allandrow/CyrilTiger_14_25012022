@@ -1,18 +1,7 @@
 import { FormEvent, SyntheticEvent, useState } from 'react'
+import { Employee } from '../../data/types'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
-
-type Employee = {
-  firstName: string
-  lastName: string
-  dateOfBirth: string
-  startDate: string
-  street: string
-  city: string
-  state: string
-  zipCode: string
-  department: string
-}
 
 export const NewEmployeeForm = () => {
   const initialEmployeeState = {

@@ -1,7 +1,4 @@
-export type State = {
-  name: string
-  abbreviation: string
-}
+import { Employee, State } from './types'
 
 const states: State[] = [
   {
@@ -250,4 +247,18 @@ const departments: string[] = [
   'legal',
 ]
 
-export { states, departments }
+const employees: Employee[] = [
+  {
+    firstName: 'Jean',
+    lastName: 'Michel',
+    dateOfBirth: '1987-07-28',
+    startDate: '2022-01-31',
+    street: '5 2nd Street',
+    city: 'Paris',
+    state: 'AZ',
+    zipCode: '75001',
+    department: 'sales',
+  },
+]
+
+export { states, departments, employees }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
-import { State } from '../data/selectData'
+import { State } from '../data/types'
 
 const getOptions = async (type: string) => {
   const { data } = await axios.get(`http://localhost:3000/${type}`)

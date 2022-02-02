@@ -1,13 +1,4 @@
-import { FormEvent } from 'react'
-
-interface InputWrapperProps {
-  label: string
-  type?: string
-  name: string
-  value: string
-  placeholder?: string
-  handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
-}
+import { InputWrapperProps } from '../../data/types'
 
 export const InputWrapper = ({
   label,

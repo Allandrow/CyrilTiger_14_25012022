@@ -1,16 +1,6 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { State } from '../../data/selectData'
+import { useEffect, useState } from 'react'
+import { OptionsState, SelectWrapperProps } from '../../data/types'
 import { useOptions } from '../../hooks/useOptions'
-
-interface SelectWrapperProps {
-  label: string
-  name: string
-  handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
-  init: (value: string, name: string) => void
-  content: string
-}
-
-type OptionsState = State[] | []
 
 export const SelectWrapper = ({
   label,

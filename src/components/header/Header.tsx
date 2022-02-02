@@ -1,9 +1,5 @@
 import { Link } from 'react-router-dom'
-
-interface HeaderProps {
-  link: string
-  text: string
-}
+import { HeaderProps } from '../../data/types'
 
 export const Header = ({ link, text }: HeaderProps) => {
   return (
