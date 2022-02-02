@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { FormEvent, SyntheticEvent, useState } from 'react'
 import { Employee } from '../../data/types'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
@@ -18,24 +19,21 @@ export const NewEmployeeForm = () => {
 
   const [employee, setEmployee] = useState(initialEmployeeState)
 
-  const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.currentTarget
+  const updateEmployeeField = (name: string, value: string) => {
     setEmployee((prevState) => ({
       ...prevState,
       [name]: value,
     }))
   }
 
-  const handleInit = (value: string, name: string) => {
-    setEmployee((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }))
+  const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.currentTarget
+    updateEmployeeField(name, value)
   }
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
-    console.log(employee)
+    axios.post('/employees', employee)
   }
 
   return (
@@ -71,7 +69,7 @@ export const NewEmployeeForm = () => {
         placeholder="dd/mm/yyyy"
       />
       <fieldset>
-        <legend>Adress</legend>
+        <legend>Address</legend>
         <InputWrapper
           label="Street"
           name="street"
@@ -90,7 +88,7 @@ export const NewEmployeeForm = () => {
           label="State"
           name="state"
           handler={handleChange}
-          init={handleInit}
+          init={updateEmployeeField}
           content="states"
         />
         <InputWrapper
@@ -105,7 +103,7 @@ export const NewEmployeeForm = () => {
         label="Department"
         name="department"
         handler={handleChange}
-        init={handleInit}
+        init={updateEmployeeField}
         content="departments"
       />
       <button onClick={handleSubmit}>Save</button>

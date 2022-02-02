@@ -1,13 +1,19 @@
 import { rest } from 'msw'
-import { states, departments } from '../data/selectData'
-
-const baseUrl = 'http://localhost:3000'
+import { states, departments, employees } from '../data/selectData'
+import { Employee } from '../data/types'
 
 export const handlers = [
-  rest.get(`${baseUrl}/states`, (req, res, ctx) => {
+  rest.get('/states', (_, res, ctx) => {
     return res(ctx.status(200), ctx.json(states))
   }),
-  rest.get(`${baseUrl}/departments`, (req, res, ctx) => {
+  rest.get('/departments', (_, res, ctx) => {
     return res(ctx.status(200), ctx.json(departments))
+  }),
+  rest.post('/employees', (req, res, ctx) => {
+    employees.push(req.body as Employee)
+    return res(ctx.status(200))
+  }),
+  rest.get('/employees', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.json(employees))
   }),
 ]

@@ -1,6 +1,13 @@
-import { useEffect, useState } from 'react'
-import { OptionsState, SelectWrapperProps } from '../../data/types'
+import { useEffect, FormEvent } from 'react'
 import { useOptions } from '../../hooks/useOptions'
+
+type SelectWrapperProps = {
+  label: string
+  name: string
+  handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
+  init: (value: string, name: string) => void
+  content: string
+}
 
 export const SelectWrapper = ({
   label,
@@ -9,25 +16,12 @@ export const SelectWrapper = ({
   init,
   content,
 }: SelectWrapperProps) => {
-  const [options, setOptions] = useState([] as OptionsState)
-  const { status, data, error } = useOptions(content)
+  const { status, options, error } = useOptions(content)
 
   useEffect(() => {
-    if (data) {
-      setOptions(
-        data.map((item) => {
-          return typeof item === 'string'
-            ? { name: item, abbreviation: item }
-            : item
-        })
-      )
-    }
-  }, [data])
-
-  useEffect(() => {
-    if (options.length > 0) {
+    if (options) {
       const value = options[0].abbreviation
-      init(value, name)
+      init(name, value)
     }
   }, [options])
 
@@ -42,7 +36,7 @@ export const SelectWrapper = ({
     )
   }
 
-  if (status === 'loading') {
+  if (status === 'loading' || !options) {
     return (
       <label>
         <span>{label}</span>

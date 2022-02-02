@@ -1,6 +1,6 @@
-import { Employee, State } from './types'
+import { Employee, Option } from './types'
 
-const states: State[] = [
+const states: Option[] = [
   {
     name: 'Alabama',
     abbreviation: 'AL',
@@ -239,7 +239,7 @@ const states: State[] = [
   },
 ]
 
-const departments: string[] = [
+const departments = [
   'sales',
   'marketing',
   'engineering',
