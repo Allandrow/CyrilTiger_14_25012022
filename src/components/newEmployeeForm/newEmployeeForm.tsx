@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { FormEvent, SyntheticEvent, useState } from 'react'
+import { useMutation, useQueryClient } from 'react-query'
 import { Employee } from '../../data/types'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
@@ -19,6 +20,18 @@ export const NewEmployeeForm = () => {
 
   const [employee, setEmployee] = useState(initialEmployeeState)
 
+  const queryClient = useQueryClient()
+
+  const addEmployee = (employee: Employee) => {
+    return axios.post('/employees', employee)
+  }
+
+  const mutation = useMutation(addEmployee, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('employees')
+    },
+  })
+
   const updateEmployeeField = (name: string, value: string) => {
     setEmployee((prevState) => ({
       ...prevState,
@@ -33,7 +46,7 @@ export const NewEmployeeForm = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
-    axios.post('/employees', employee)
+    mutation.mutate(employee)
   }
 
   return (
