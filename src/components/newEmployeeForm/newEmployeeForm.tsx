@@ -27,8 +27,9 @@ export const NewEmployeeForm = () => {
   }
 
   const mutation = useMutation(addEmployee, {
-    onSuccess: () => {
+    onSuccess: async ({ data }) => {
       queryClient.invalidateQueries('employees')
+      queryClient.setQueryData('employees', data)
     },
   })
 

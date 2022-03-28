@@ -10,8 +10,12 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(departments))
   }),
   rest.post('/employees', (req, res, ctx) => {
-    employees.push(req.body as Employee)
-    return res(ctx.status(200))
+    const employee = { ...(req.body as Employee) }
+    const key = Object.values(employee)
+      .reduce((str, value) => (str += value), '')
+      .replace(/\s+/g, '')
+    employees.push({ ...employee, key })
+    return res(ctx.status(200), ctx.json(employees))
   }),
   rest.get('/employees', (_, res, ctx) => {
     return res(ctx.status(200), ctx.json(employees))

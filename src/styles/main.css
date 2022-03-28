@@ -11,29 +11,29 @@ fieldset {
   gap: 2rem;
 }
 
-form {
+.employee-creation form {
   padding-bottom: 3rem;
 }
 
-label {
+.employee-creation label {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-input,
-select {
+.employee-creation input,
+.employee-creation select {
   width: 50%;
 }
 
-fieldset {
+.employee-creation fieldset {
   padding: 1rem;
 }
 
-select {
+.employee-creation select {
   text-transform: capitalize;
 }
 
-option {
+.employee-creation option {
   text-transform: capitalize;
 }
