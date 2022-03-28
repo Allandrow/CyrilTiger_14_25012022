@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { FormEvent, SyntheticEvent, useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { Employee } from '../../data/types'
+import { Employee } from '../../types'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
 

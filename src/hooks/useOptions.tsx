@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import { OptionsState, Option } from '../data/types'
+import { Option } from '../types'
+
+type OptionsState = Option[] | undefined
 
 const getOptions = async (type: string) => {
   const { data } = await axios.get(`/${type}`)

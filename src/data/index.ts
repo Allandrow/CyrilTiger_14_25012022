@@ -1,2 +1,4 @@
-export type { Employee, Option, OptionsState } from './types'
-export { columns, departments, employees, states } from './selectData'
+export { employees } from './employees'
+export { columns } from './columns'
+export { departments } from './departments'
+export { states } from './states'

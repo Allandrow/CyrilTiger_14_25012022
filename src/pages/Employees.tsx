@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import { Header } from '../components/header/Header'
-import '../styles/table.css'
-import { Employee } from '../data'
 import { TableSection } from '../components/tableSection/TableSection'
+import { Employee } from '../types'
+import '../styles/table.css'
+import { Link } from 'react-router-dom'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
@@ -28,8 +28,13 @@ export const Employees = () => {
 
   return (
     <>
-      <Header link="/" text="Home" />
+      <header>
+        <h1>Current Employees</h1>
+      </header>
       <TableSection data={employeeList} />
+      <footer>
+        <Link to={'/'}>Home</Link>
+      </footer>
     </>
   )
 }

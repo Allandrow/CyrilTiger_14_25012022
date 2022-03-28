@@ -7,7 +7,7 @@ interface FilterProps {
 export const Filter = ({ handleFiltering }: FilterProps) => {
   return (
     <label htmlFor="search">
-      <span>Search :</span>
+      <span>Search : </span>
       <input
         type="search"
         id="search"
