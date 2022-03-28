@@ -7,10 +7,6 @@
   --sort-color: #7a80dd;
 }
 
-body {
-  width: 100%;
-}
-
 .dataTable {
   display: grid;
   max-width: 1200px;
@@ -20,7 +16,7 @@ body {
   grid-template-areas:
     'select . . search'
     'table table table table'
-    'recap recap pagination pagination';
+    'recap . . pagination';
 }
 
 label[for='entries'] {

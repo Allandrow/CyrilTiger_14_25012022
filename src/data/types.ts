@@ -6,6 +6,7 @@ export type Option = {
 export type OptionsState = Option[] | undefined
 
 export type Employee = {
+  key: string
   firstName: string
   lastName: string
   dateOfBirth: string

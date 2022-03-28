@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import { DataTable } from 'react-ts-datatable'
 import { Header } from '../components/header/Header'
-import { columns } from '../data/selectData'
 import '../styles/table.css'
+import { Employee } from '../data'
+import { TableSection } from '../components/tableSection/TableSection'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
@@ -14,7 +14,7 @@ const getEmployees = async () => {
 }
 
 export const Employees = () => {
-  const [employeeList, setEmployeeList] = useState([])
+  const [employeeList, setEmployeeList] = useState([] as Employee[])
   const employeeListQuery = useQuery('employees', getEmployees, {
     refetchOnWindowFocus: false,
     staleTime: FIVE_MINUTES,
@@ -29,7 +29,7 @@ export const Employees = () => {
   return (
     <>
       <Header link="/" text="Home" />
-      <DataTable data={employeeList} columns={columns} />
+      <TableSection data={employeeList} />
     </>
   )
 }

@@ -1,6 +1,7 @@
+import { DefaultColumn } from 'react-ts-datatable/dist/types'
 import { Employee, Option } from './types'
 
-const states: Option[] = [
+export const states: Option[] = [
   {
     name: 'Alabama',
     abbreviation: 'AL',
@@ -239,7 +240,7 @@ const states: Option[] = [
   },
 ]
 
-const departments = [
+export const departments = [
   'sales',
   'marketing',
   'engineering',
@@ -247,8 +248,9 @@ const departments = [
   'legal',
 ]
 
-const employees: Employee[] = [
+export const employees: Employee[] = [
   {
+    key: 'siggsgwfbwbg-faggrg',
     firstName: 'Jean',
     lastName: 'Michel',
     dateOfBirth: '1987-07-28',
@@ -261,16 +263,18 @@ const employees: Employee[] = [
   },
 ]
 
-export { states, departments, employees }
-
-export const columns = [
-  { key: 'firstName', header: 'First Name' },
-  { key: 'lastName', header: 'Last Name' },
-  { key: 'startDate', header: 'Start Date', sortMethod: 'sortDateISO' },
-  { key: 'department', header: 'Department' },
-  { key: 'dateOfBirth', header: 'Date of Birth', sortMethod: 'sortDateISO' },
-  { key: 'street', header: 'Street' },
-  { key: 'city', header: 'City' },
-  { key: 'state', header: 'State' },
-  { key: 'zipCode', header: 'Zip Code', sortMethod: 'sortNumber' },
+export const columns: DefaultColumn[] = [
+  { id: 'firstName', displayText: 'First Name' },
+  { id: 'lastName', displayText: 'Last Name' },
+  { id: 'startDate', displayText: 'Start Date', sortMethod: 'sortDateISO' },
+  { id: 'department', displayText: 'Department' },
+  {
+    id: 'dateOfBirth',
+    displayText: 'Date of Birth',
+    sortMethod: 'sortDateISO',
+  },
+  { id: 'street', displayText: 'Street' },
+  { id: 'city', displayText: 'City' },
+  { id: 'state', displayText: 'State' },
+  { id: 'zipCode', displayText: 'Zip Code', sortMethod: 'sortNumber' },
 ]
