@@ -7,6 +7,7 @@ type SelectWrapperProps = {
   handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
   init: (value: string, name: string) => void
   content: string
+  value: string
 }
 
 export const SelectWrapper = ({
@@ -15,15 +16,15 @@ export const SelectWrapper = ({
   handler,
   init,
   content,
+  value,
 }: SelectWrapperProps) => {
   const { status, options, error } = useOptions(content)
 
   useEffect(() => {
-    if (options) {
-      const value = options[0].abbreviation
-      init(name, value)
+    if (options && value === '') {
+      init(name, options[0].abbreviation)
     }
-  }, [options])
+  }, [options, value])
 
   if (error) {
     return (
@@ -50,7 +51,7 @@ export const SelectWrapper = ({
   return (
     <label>
       <span>{label}</span>
-      <select name={name} onChange={handler}>
+      <select name={name} onChange={handler} value={value}>
         {options.map((item) => (
           <option value={item.abbreviation} key={item.abbreviation}>
             {item.name}

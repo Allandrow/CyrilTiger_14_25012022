@@ -30,6 +30,7 @@ export const Form = () => {
     onSuccess: async ({ data }) => {
       queryClient.invalidateQueries('employees')
       queryClient.setQueryData('employees', data)
+      setEmployee(initialEmployeeState)
     },
   })
 
@@ -104,6 +105,7 @@ export const Form = () => {
           handler={handleChange}
           init={updateEmployeeField}
           content="states"
+          value={employee.state}
         />
         <InputWrapper
           label="Zip Code"
@@ -119,6 +121,7 @@ export const Form = () => {
         handler={handleChange}
         init={updateEmployeeField}
         content="departments"
+        value={employee.department}
       />
       <button onClick={handleSubmit}>Save</button>
     </form>
