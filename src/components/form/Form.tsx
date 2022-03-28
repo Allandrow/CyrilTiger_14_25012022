@@ -5,7 +5,7 @@ import { Employee } from '../../types'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
 
-export const NewEmployeeForm = () => {
+export const Form = () => {
   const initialEmployeeState = {
     firstName: '',
     lastName: '',

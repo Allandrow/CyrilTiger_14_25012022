@@ -13,7 +13,7 @@ const getEmployees = async () => {
   return data
 }
 
-export const Employees = () => {
+export const EmployeesList = () => {
   const [employeeList, setEmployeeList] = useState([] as Employee[])
   const employeeListQuery = useQuery('employees', getEmployees, {
     refetchOnWindowFocus: false,

@@ -1,6 +1,7 @@
 import { useTable } from 'react-ts-datatable'
 import { UseTableValues } from 'react-ts-datatable/dist/types'
-import { Employee, columns } from '../../data'
+import { columns } from '../../data'
+import { Employee } from '../../types'
 import { Filter } from '../filter/Filter'
 import { PageSizeSelect } from '../pageSizeSelect/PageSizeSelect'
 import { Pagination } from '../pagination/Pagination'

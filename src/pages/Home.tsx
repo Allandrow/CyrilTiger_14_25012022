@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { NewEmployeeForm } from '../components/newEmployeeForm/newEmployeeForm'
+import { Form } from '../components/form/Form'
 
 export const Home = () => {
   return (
@@ -10,7 +10,7 @@ export const Home = () => {
       </header>
       <section className="employee-creation">
         <h2>Create Employee</h2>
-        <NewEmployeeForm />
+        <Form />
       </section>
     </>
   )
