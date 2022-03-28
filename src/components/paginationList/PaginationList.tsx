@@ -22,7 +22,7 @@ export const PaginationList = ({
       {suspendBeforeList && (
         <>
           <li key={firstPage}>
-            <PageButton page={page} handlePageChange={handlePageChange} />
+            <PageButton page={firstPage} handlePageChange={handlePageChange} />
           </li>
           <li key="suspendedBeforeList">
             <span>…</span>

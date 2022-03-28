@@ -18,10 +18,12 @@ export const Pagination = ({
     ? paginationWithSuspend(pagination)
     : null
 
-  const goToPreviousPage = () =>
-    handlePageChange(pagination ? pagination.page - 1 : 1)
-  const goToNextPage = () =>
-    handlePageChange(pagination ? pagination.page + 1 : 1)
+  const goToPreviousPage = () => {
+    if (pagination) handlePageChange(pagination.page - 1)
+  }
+  const goToNextPage = () => {
+    if (pagination) handlePageChange(pagination.page + 1)
+  }
 
   const isPreviousButtonDisabled =
     !pagination || pagination.page === pagination.firstPage
