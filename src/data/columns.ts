@@ -1,6 +1,6 @@
-import { DefaultColumn } from 'react-ts-datatable/dist/types'
+import { Column } from 'react-ts-datatable/dist/types'
 
-export const columns: DefaultColumn[] = [
+export const columns: Column[] = [
   { id: 'firstName', displayText: 'First Name' },
   { id: 'lastName', displayText: 'Last Name' },
   { id: 'startDate', displayText: 'Start Date', sortMethod: 'sortDateISO' },
