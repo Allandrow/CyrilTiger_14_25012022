@@ -26,6 +26,7 @@ export const DateWrapper = ({
         yearPlaceholder="YYYY"
         monthPlaceholder="MM"
         dayPlaceholder="DD"
+        format="MM/dd/yyyy"
       />
     </label>
   )
