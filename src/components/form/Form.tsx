@@ -1,16 +1,51 @@
 import axios from 'axios'
 import { FormEvent, SyntheticEvent, useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { Employee } from '../../types'
+import { DateWrapper } from '../dateWrapper/DateWrapper'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
+
+export type Employee = {
+  key: string
+  firstName: string
+  lastName: string
+  dateOfBirth: Date | string
+  startDate: Date | string
+  street: string
+  city: string
+  state: string
+  zipCode: string
+  department: string
+}
+
+export type HandleDateChange = (value: Date, name: string) => void
+
+const padLeft = (value: string) => {
+  return value.length < 2 ? `0${value}` : value
+}
+
+const getDateString = (date: Date): string => {
+  const days = date.getDate().toString()
+  const month = (date.getMonth() + 1).toString()
+  const year = date.getFullYear().toString()
+
+  return `${padLeft(month)}/${padLeft(days)}/${year}`
+}
+
+const formatEmployeeDates = (employee: Employee): Employee => {
+  return {
+    ...employee,
+    dateOfBirth: getDateString(employee.dateOfBirth as Date),
+    startDate: getDateString(employee.startDate as Date),
+  }
+}
 
 export const Form = () => {
   const initialEmployeeState = {
     firstName: '',
     lastName: '',
-    dateOfBirth: '',
-    startDate: '',
+    dateOfBirth: new Date(),
+    startDate: new Date(),
     street: '',
     city: '',
     state: '',
@@ -34,8 +69,8 @@ export const Form = () => {
     },
   })
 
-  const updateEmployeeField = (name: string, value: string) => {
-    setEmployee((prevState) => ({
+  const updateEmployeeField = (name: string, value: string | Date) => {
+    setEmployee((prevState: Employee) => ({
       ...prevState,
       [name]: value,
     }))
@@ -46,9 +81,14 @@ export const Form = () => {
     updateEmployeeField(name, value)
   }
 
+  const handleDateChange: HandleDateChange = (value, name) => {
+    updateEmployeeField(name, value)
+  }
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
-    mutation.mutate(employee)
+    const formattedEmployee = formatEmployeeDates(employee)
+    mutation.mutate(formattedEmployee)
   }
 
   return (
@@ -67,21 +107,17 @@ export const Form = () => {
         handler={handleChange}
         placeholder="Employee's last name"
       />
-      <InputWrapper
+      <DateWrapper
         label="Date of Birth"
-        type="date"
         name="dateOfBirth"
         value={employee.dateOfBirth}
-        handler={handleChange}
-        placeholder="dd/mm/yyyy"
+        handler={handleDateChange}
       />
-      <InputWrapper
+      <DateWrapper
         label="Start Date"
-        type="date"
         name="startDate"
         value={employee.startDate}
-        handler={handleChange}
-        placeholder="dd/mm/yyyy"
+        handler={handleDateChange}
       />
       <fieldset>
         <legend>Address</legend>
