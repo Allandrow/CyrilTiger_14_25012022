@@ -1,10 +1,12 @@
-import { useEffect, FormEvent } from 'react'
+import { useEffect } from 'react'
+import Dropdown from 'react-dropdown'
 import { useOptions } from '../../hooks/useOptions'
+import { HandleDropdownChange } from '../form/Form'
 
 type SelectWrapperProps = {
   label: string
   name: string
-  handler: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
+  handler: HandleDropdownChange
   init: (value: string, name: string) => void
   content: string
   value: string
@@ -22,7 +24,7 @@ export const SelectWrapper = ({
 
   useEffect(() => {
     if (options && value === '') {
-      init(name, options[0].abbreviation)
+      init(name, options[0].label)
     }
   }, [options, value])
 
@@ -30,9 +32,7 @@ export const SelectWrapper = ({
     return (
       <label>
         <span>{label}</span>
-        <select name={name} disabled>
-          <option value="">Something went wrong...</option>
-        </select>
+        <Dropdown options={['Something went wrong']} disabled />
       </label>
     )
   }
@@ -41,9 +41,7 @@ export const SelectWrapper = ({
     return (
       <label>
         <span>{label}</span>
-        <select name={name} disabled>
-          <option value="">Loading options...</option>
-        </select>
+        <Dropdown options={['Loading options…']} disabled />
       </label>
     )
   }
@@ -51,13 +49,11 @@ export const SelectWrapper = ({
   return (
     <label>
       <span>{label}</span>
-      <select name={name} onChange={handler} value={value}>
-        {options.map((item) => (
-          <option value={item.abbreviation} key={item.abbreviation}>
-            {item.name}
-          </option>
-        ))}
-      </select>
+      <Dropdown
+        options={options}
+        onChange={(option) => handler(option.value, name)}
+        value={value}
+      />
     </label>
   )
 }

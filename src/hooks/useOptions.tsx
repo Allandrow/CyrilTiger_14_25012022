@@ -26,8 +26,8 @@ export const useOptions = (type: string) => {
         data.map((item) => {
           if (typeof item === 'string') {
             return {
-              name: item,
-              abbreviation: item,
+              value: item,
+              label: item,
             }
           }
           return item

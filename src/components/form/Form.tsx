@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { DateWrapper } from '../dateWrapper/DateWrapper'
 import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
+import 'react-dropdown/style.css'
 
 export type Employee = {
   key: string
@@ -19,6 +20,7 @@ export type Employee = {
 }
 
 export type HandleDateChange = (value: Date, name: string) => void
+export type HandleDropdownChange = (value: string, name: string) => void
 
 const padLeft = (value: string) => {
   return value.length < 2 ? `0${value}` : value
@@ -81,6 +83,10 @@ export const Form = () => {
     updateEmployeeField(name, value)
   }
 
+  const handleDropdownChange: HandleDropdownChange = (value, name) => {
+    updateEmployeeField(name, value)
+  }
+
   const handleDateChange: HandleDateChange = (value, name) => {
     updateEmployeeField(name, value)
   }
@@ -138,7 +144,7 @@ export const Form = () => {
         <SelectWrapper
           label="State"
           name="state"
-          handler={handleChange}
+          handler={handleDropdownChange}
           init={updateEmployeeField}
           content="states"
           value={employee.state}
@@ -154,7 +160,7 @@ export const Form = () => {
       <SelectWrapper
         label="Department"
         name="department"
-        handler={handleChange}
+        handler={handleDropdownChange}
         init={updateEmployeeField}
         content="departments"
         value={employee.department}
