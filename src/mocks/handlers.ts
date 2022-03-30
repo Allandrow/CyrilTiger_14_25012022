@@ -1,6 +1,8 @@
 import { rest } from 'msw'
-import { states, departments, employees } from '../data'
+import { states, departments } from '../data'
 import { Employee } from '../types'
+
+const employees: Employee[] = []
 
 export const handlers = [
   rest.get('/states', (_, res, ctx) => {
@@ -13,9 +15,7 @@ export const handlers = [
     const employee = { ...(req.body as Employee) }
 
     // construct unique key from object values + remove spaces inside the string
-    const key = Object.values(employee)
-      .reduce((str, value) => (str += value), '')
-      .replace(/\s+/g, '')
+    const key = Date.now().toString()
 
     employees.push({ ...employee, key })
 
