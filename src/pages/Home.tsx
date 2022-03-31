@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Modal } from '@/modules/form'
-import { Form } from '../components/form/Form'
+import { Form, Modal } from '@/modules/form'
 import { Header } from '@/modules/common'
+
+export type ModalHandler = (value: boolean) => void
 
 export const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,10 +13,12 @@ export const Home = () => {
       <Header title="HRnet">
         <Link to={'/employees'}>View Current Employees</Link>
       </Header>
+
       <section className="employee-creation">
         <h2>Create Employee</h2>
-        <Form handler={setIsOpen} />
+        <Form modalHandler={setIsOpen} />
       </section>
+
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   )

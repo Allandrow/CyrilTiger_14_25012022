@@ -12,7 +12,7 @@ const getOptions = async (type: string) => {
 
 export const useOptions = (type: string) => {
   const [options, setOptions] = useState(undefined as OptionsState)
-  const { status, data, error } = useQuery<Option[] | string[], Error>(
+  const { data, error } = useQuery<Option[] | string[], Error>(
     type,
     () => getOptions(type),
     {
@@ -36,5 +36,5 @@ export const useOptions = (type: string) => {
     }
   }, [data])
 
-  return { status, options, error }
+  return { options, error }
 }

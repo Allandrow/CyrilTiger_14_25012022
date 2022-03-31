@@ -6,6 +6,8 @@ interface ModalProps {
 }
 
 export const Modal = ({ isOpen, setIsOpen }: ModalProps) => {
+  ReactModal.setAppElement('#root')
+
   return (
     <ReactModal
       isOpen={isOpen}
