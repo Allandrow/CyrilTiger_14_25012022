@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './styles/reset.css'
-import './styles/main.css'
-import App from './App'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { worker } from './mocks/browser'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import App from './App'
+import './styles/reset.css'
+import './styles/main.css'
 
 worker.start({
   onUnhandledRequest(req) {
