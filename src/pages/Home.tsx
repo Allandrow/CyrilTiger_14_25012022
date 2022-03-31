@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom'
 import ReactModal from 'react-modal'
 import { Form } from '../components/form/Form'
 import { useState } from 'react'
+import { Header } from '@/modules/common'
 
 export const Home = () => {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
-      <header>
-        <h1>HRnet</h1>
+      <Header title="HRnet">
         <Link to={'/employees'}>View Current Employees</Link>
-      </header>
+      </Header>
       <section className="employee-creation">
         <h2>Create Employee</h2>
         <Form handler={setShowModal} />

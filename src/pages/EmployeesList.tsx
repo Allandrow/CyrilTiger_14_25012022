@@ -5,6 +5,7 @@ import { TableSection } from '../components/tableSection/TableSection'
 import { Employee } from '../types'
 import '../styles/table.css'
 import { Link } from 'react-router-dom'
+import { Header } from '@/modules/common'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
@@ -28,9 +29,7 @@ export const EmployeesList = () => {
 
   return (
     <>
-      <header>
-        <h1>Current Employees</h1>
-      </header>
+      <Header title="Current Employees" />
       <TableSection data={employeeList} />
       <footer>
         <Link to={'/'}>Home</Link>

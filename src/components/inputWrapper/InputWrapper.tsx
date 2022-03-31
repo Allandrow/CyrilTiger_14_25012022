@@ -1,3 +1,4 @@
+import { InputLabel } from '@/modules/common'
 import { FormEvent } from 'react'
 
 type InputWrapperProps = {
@@ -18,8 +19,7 @@ export const InputWrapper = ({
   handler,
 }: InputWrapperProps) => {
   return (
-    <label>
-      <span>{label}</span>
+    <InputLabel label={label}>
       <input
         type={type}
         name={name}
@@ -27,6 +27,6 @@ export const InputWrapper = ({
         placeholder={placeholder}
         onChange={handler}
       />
-    </label>
+    </InputLabel>
   )
 }
