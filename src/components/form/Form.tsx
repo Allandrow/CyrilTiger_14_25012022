@@ -6,6 +6,10 @@ import { InputWrapper } from '../inputWrapper/InputWrapper'
 import { SelectWrapper } from '../selectWrapper/SelectWrapper'
 import 'react-dropdown/style.css'
 
+interface FormProps {
+  handler: (value: boolean) => void
+}
+
 export type Employee = {
   key: string
   firstName: string
@@ -42,7 +46,7 @@ const formatEmployeeDates = (employee: Employee): Employee => {
   }
 }
 
-export const Form = () => {
+export const Form = ({ handler }: FormProps) => {
   const initialEmployeeState = {
     firstName: '',
     lastName: '',
@@ -95,6 +99,7 @@ export const Form = () => {
     e.preventDefault()
     const formattedEmployee = formatEmployeeDates(employee)
     mutation.mutate(formattedEmployee)
+    handler(true)
   }
 
   return (

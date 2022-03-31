@@ -268,3 +268,33 @@ footer {
 .react-date-picker__calendar .react-calendar {
   border-width: thin;
 }
+
+/* MODAL */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 0.25rem;
+  width: min(90%, 400px);
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.modal-content button {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: #000;
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
