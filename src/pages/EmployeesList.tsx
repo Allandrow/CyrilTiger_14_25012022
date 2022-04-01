@@ -5,7 +5,7 @@ import { Employee } from '../types'
 import { Link } from 'react-router-dom'
 import { Header } from '@/modules/common'
 import { TableContainer } from '@/modules/table'
-import '../styles/table.css'
+import '@/styles/table.css'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
@@ -16,16 +16,16 @@ const getEmployees = async () => {
 
 export const EmployeesList = () => {
   const [employeeList, setEmployeeList] = useState([] as Employee[])
-  const employeeListQuery = useQuery('employees', getEmployees, {
+  const { data, status } = useQuery('employees', getEmployees, {
     refetchOnWindowFocus: false,
     staleTime: FIVE_MINUTES,
   })
 
   useEffect(() => {
-    if (employeeListQuery.status === 'success') {
-      setEmployeeList(employeeListQuery.data)
+    if (status === 'success') {
+      setEmployeeList(data)
     }
-  }, [employeeListQuery.status])
+  }, [status])
 
   return (
     <>

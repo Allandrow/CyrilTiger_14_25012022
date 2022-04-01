@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { worker } from './mocks/browser'
 import App from './App'
-import './styles/reset.css'
-import './styles/main.css'
+import '@/styles/reset.css'
+import '@/styles/main.css'
 
 worker.start({
   onUnhandledRequest(req) {

@@ -1,6 +1,7 @@
 import { useDropdown } from 'hooks/useDropdown'
 import DatePicker from 'react-date-picker/dist/entry.nostyle'
 import { UpdateField } from 'types'
+import '@/styles/datepicker.css'
 
 interface FieldProps {
   label: string

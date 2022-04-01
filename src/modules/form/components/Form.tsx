@@ -110,6 +110,7 @@ export const Form = ({ modalHandler }: FormProps) => {
           type="number"
           value={employee.zipCode}
           handler={updateEmployeeField}
+          placeholder="City Zip Code"
         />
       </fieldset>
 

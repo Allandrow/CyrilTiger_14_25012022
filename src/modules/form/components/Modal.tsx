@@ -1,4 +1,5 @@
 import ReactModal from 'react-modal'
+import '@/styles/modal.css'
 
 interface ModalProps {
   isOpen: boolean
@@ -18,7 +19,7 @@ export const Modal = ({ isOpen, setIsOpen }: ModalProps) => {
       portalClassName={'modal'}
     >
       <p>Employee created !</p>
-      <button onClick={() => setIsOpen(false)}>X</button>
+      <button onClick={() => setIsOpen(false)}>Close</button>
     </ReactModal>
   )
 }

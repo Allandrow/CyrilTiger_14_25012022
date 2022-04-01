@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
+      "@/styles/*": ["styles/*"],
       "@/data": ["data"],
       "@/utils": ["utils"],
       "@/pages": ["pages"],
