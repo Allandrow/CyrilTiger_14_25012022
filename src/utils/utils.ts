@@ -11,11 +11,3 @@ export const getDateString = (date: Date): string => {
 
   return `${padLeft(month)}/${padLeft(days)}/${year}`
 }
-
-// const formatEmployeeDates = (employee: Employee): Employee => {
-//   return {
-//     ...employee,
-//     dateOfBirth: getDateString(employee.dateOfBirth as Date),
-//     startDate: getDateString(employee.startDate as Date),
-//   }
-// }

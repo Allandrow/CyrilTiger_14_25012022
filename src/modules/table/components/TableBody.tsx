@@ -5,7 +5,6 @@ interface TableBodyProps {
   colSpan: number
   isFiltered: boolean
 }
-
 export const TableBody = ({ rows, colSpan, isFiltered }: TableBodyProps) => {
   const hasNoData = rows.length === 0 && !isFiltered
   const hasNoFilteredData = rows.length === 0 && isFiltered
@@ -22,11 +21,12 @@ export const TableBody = ({ rows, colSpan, isFiltered }: TableBodyProps) => {
 
       {hasNoFilteredData && (
         <tr>
-          <td colSpan={colSpan} className="empty">
+          <td className="empty" colSpan={colSpan}>
             No matching records found
           </td>
         </tr>
       )}
+
       {rows.map(({ data, key }) => (
         <tr key={key}>
           {data.map(({ cellValue, key, isSorted }) => (

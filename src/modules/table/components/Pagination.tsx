@@ -3,7 +3,7 @@ import {
   HandlePageChange,
   PaginationParams,
 } from 'react-ts-datatable/dist/types'
-import { PaginationList } from '../paginationList/PaginationList'
+import { PaginationList } from './PaginationList'
 
 interface PaginationProps {
   pagination: PaginationParams | null
@@ -21,6 +21,7 @@ export const Pagination = ({
   const goToPreviousPage = () => {
     if (pagination) handlePageChange(pagination.page - 1)
   }
+
   const goToNextPage = () => {
     if (pagination) handlePageChange(pagination.page + 1)
   }

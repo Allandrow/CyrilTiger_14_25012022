@@ -18,9 +18,9 @@ export const PageSizeSelect = ({
         onChange={(e) => handlePageSizing(parseInt(e.currentTarget.value, 10))}
         defaultValue={options[0]}
       >
-        {options.map((item) => (
-          <option key={item} value={item}>
-            {item}
+        {options.map((value) => (
+          <option key={value} value={value}>
+            {value}
           </option>
         ))}
       </select>

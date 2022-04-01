@@ -1,6 +1,6 @@
 import { HandleSorting, Header, Row } from 'react-ts-datatable/dist/types'
-import { TableBody } from '../tableBody/TableBody'
-import { TableHeader } from '../tableHeader/TableHeader'
+import { TableBody } from './TableBody'
+import { TableHeader } from './TableHeader'
 
 interface TableProps {
   headers: Header[]

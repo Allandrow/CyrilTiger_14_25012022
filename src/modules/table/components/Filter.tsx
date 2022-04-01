@@ -10,7 +10,7 @@ export const Filter = ({ handleFiltering }: FilterProps) => {
       <span>Search : </span>
       <input
         type="search"
-        id="search"
+        id="seach"
         onChange={(e) => handleFiltering(e.currentTarget.value)}
       />
     </label>

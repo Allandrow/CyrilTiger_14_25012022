@@ -1,8 +1,8 @@
+import { PageButton } from './PageButton'
 import {
   HandlePageChange,
   PaginationRenderValues,
 } from 'react-ts-datatable/dist/types'
-import { PageButton } from '../pageButton/PageButton'
 
 interface PaginationListProps extends PaginationRenderValues {
   handlePageChange: HandlePageChange
@@ -29,6 +29,7 @@ export const PaginationList = ({
           </li>
         </>
       )}
+
       {pageList.length > 0 &&
         pageList.map((pageNumber) => (
           <li key={pageNumber} className={pageNumber === page ? 'current' : ''}>
@@ -42,6 +43,7 @@ export const PaginationList = ({
             )}
           </li>
         ))}
+
       {suspendAfterList && (
         <>
           <li key="suspendedAfterList">
