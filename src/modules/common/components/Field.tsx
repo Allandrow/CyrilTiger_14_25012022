@@ -38,6 +38,8 @@ export const Field = ({
         <DatePicker
           name={name}
           value={value}
+          calendarAriaLabel="Toggle calendar"
+          clearAriaLabel="Clear value"
           onChange={(value: Date) => handler(name, value)}
           yearPlaceholder="YYYY"
           monthPlaceholder="MM"
