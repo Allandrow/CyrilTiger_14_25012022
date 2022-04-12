@@ -11,7 +11,7 @@ interface QueryProps {
   defaultValue: Employee
 }
 
-export const useQuery = ({ stateHandler, defaultValue }: QueryProps) => {
+export const useAddEmployee = ({ stateHandler, defaultValue }: QueryProps) => {
   const queryClient = useQueryClient()
 
   const mutation = useMutation(addEmployee, {

@@ -1,7 +1,7 @@
 import { SyntheticEvent, useState } from 'react'
 import { ModalHandler } from '@/pages'
 import { Employee } from 'types'
-import { useQuery } from 'hooks'
+import { useAddEmployee } from 'hooks'
 import { Field } from '@/modules/common'
 
 interface FormProps {
@@ -25,7 +25,7 @@ export const Form = ({ modalHandler }: FormProps) => {
 
   const [employee, setEmployee] = useState(initialEmployeeState)
 
-  const mutation = useQuery({
+  const mutation = useAddEmployee({
     stateHandler: setEmployee,
     defaultValue: initialEmployeeState,
   })

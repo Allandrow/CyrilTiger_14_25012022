@@ -14,6 +14,8 @@ export const useDropdown = ({ name, value, handler }: DropDownProps) => {
   const type = `${name}s`
   const { options, error } = useOptions(type)
 
+  // initialize the state value for this field once the options are loaded
+  // and when the state is reset after submitting
   useEffect(() => {
     if (options && value === '') {
       handler(name, options[0].label)
