@@ -18,7 +18,7 @@ export const useDropdown = ({ name, value, handler }: DropDownProps) => {
   // and when the state is reset after submitting
   useEffect(() => {
     if (options && value === '') {
-      handler(name, options[0].label)
+      handler(name, options[0].value)
     }
   }, [options, value])
 
